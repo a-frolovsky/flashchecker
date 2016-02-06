@@ -10,10 +10,17 @@ html
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container
         .navbar-header
+          button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-collapse" data-toggle="collapse" type="button" 
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
           = link_to "Флэшкарточкер", root_path, class: "navbar-brand"
-        ul.nav.navbar-nav.pull-right
-          li
-            a href="#" Добавить карточку
+        
+        .collapse.navbar-collapse#navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a href="#" Добавить карточку
           
     .container
       = yield
