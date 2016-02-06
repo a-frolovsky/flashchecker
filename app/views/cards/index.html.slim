@@ -1,0 +1,12 @@
+- if @cards.blank?
+  .alert.alert-info.text-center Карточки еще не завезли!
+- else
+  .row
+    - @cards.each do |card|
+      .col-md-3.col-sm-4.col-xs-6
+        .card
+          .card_date = card.review_date.strftime("%d/%m/%Y") 
+          .card_original = card.original_text
+          .card_translate = card.translated_text
+          
+          
