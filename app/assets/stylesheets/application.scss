@@ -1,6 +1,4 @@
 @import "bootstrap";
+@import "layout";
 
-// todo remove
-body {
-  padding-top: 60px;
-}
+@import "blocks/*";
