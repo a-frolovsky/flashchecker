@@ -5,8 +5,10 @@
     - @cards.each do |card|
       .col-md-3.col-sm-4.col-xs-6
         .card
+          = link_to "удалить", card, method: :delete, data: { confirm: 'Удаляем?' }, class: "card_delete"
           .card_date = card.review_date.strftime("%d/%m/%Y") 
           .card_original = card.original_text
           .card_translate = card.translated_text
+          = link_to "редактировать", edit_card_path(card), class: "card_edit"
           
           
