@@ -5,6 +5,6 @@ class Card < ActiveRecord::Base
 
   private
   def original_not_equal_translated
-    return false if original_text.downcase == translated_text.downcase
+    original_text.downcase != translated_text.downcase
   end
 end
