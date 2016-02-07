@@ -7,7 +7,6 @@
   height: 100px;
   margin-bottom: 50px;
   border-radius: 5px;
-  overflow: hidden;
   box-shadow: 0 0 5px rgba(#000, 0.2);
   background: #fff;
   transition: all 0.2s;
@@ -20,7 +19,9 @@
       display: none;
     }
 
-    .card_translate {
+    .card_translate,
+    .card_delete,
+    .card_edit {
       display: block;
     }
   }
@@ -32,6 +33,20 @@
   right: 10px;
   text-align: right;
   color: #dadada;
+}
+
+.card_edit {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: none;
+}
+
+.card_delete {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: none;
 }
 
 .card_original,
