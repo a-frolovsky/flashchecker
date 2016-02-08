@@ -1,7 +1,9 @@
 class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, presence: true
-
   before_validation :original_equal_translated
+
+  scope :random, -> { order("RANDOM()").limit(1) }
+  scope :revision, -> { where("review_date <= ?", Time.now) }
 
   private
   def original_equal_translated
