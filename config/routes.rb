@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :cards
+  post 'revision_card' => 'cards#revision_card'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
