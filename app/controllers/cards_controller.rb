@@ -27,7 +27,7 @@ class CardsController < ApplicationController
     if @card.valid?
       redirect_to cards_path
     else
-      redirect_to new_card_path
+      render 'new'
     end
   end
 
