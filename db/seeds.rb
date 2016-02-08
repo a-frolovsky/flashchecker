@@ -14,7 +14,7 @@ words.each do |w|
   Card.create({
     original_text: item[0].to_s.strip.capitalize,
     translated_text: item[1].to_s.mb_chars.strip.capitalize,
-    review_date: Time.now + 3.days
+    review_date: Time.now
   })
 end
 
