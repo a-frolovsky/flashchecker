@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-    @cards = Card.all
+    @cards = Card.all.order(:review_date)
   end
 
   def edit
@@ -34,6 +34,16 @@ class CardsController < ApplicationController
   def destroy
     Card.find(params[:id]).destroy
     redirect_to cards_path
+  end
+
+  def revision_card
+    @card = Card.find(params[:card][:id])
+
+    if @card.check_answer(params[:answer])
+      redirect_to root_path, flash: { success: "Правильно" }
+    else
+      redirect_to root_path, flash: { danger: "Не правильно" }
+    end
   end
 
   private
