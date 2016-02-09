@@ -40,11 +40,9 @@ class CardsController < ApplicationController
     @card = Card.find(params[:card][:id])
 
     if @card.check_answer(params[:answer])
-      flash[:success] = "Правльно"
-      redirect_to root_path
+      redirect_to root_path, flash: { success: "Правильно" }
     else
-      flash[:danger] = "Не правильно"
-      redirect_to root_path
+      redirect_to root_path, flash: { danger: "Не правильно" }
     end
   end
 
