@@ -1,6 +1,4 @@
 class Card < ActiveRecord::Base
-  include Concerns::WordsEq
-
   validates :original_text, :translated_text, :review_date, presence: true
   before_validation :original_equal_translated
 
@@ -22,5 +20,9 @@ class Card < ActiveRecord::Base
 
   def update_review_date
     update_attribute(:review_date, Time.now + 3.day)
+  end
+
+  def words_eq(first, last)
+    first.downcase.strip == last.downcase.strip
   end
 end
