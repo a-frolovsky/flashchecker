@@ -15,9 +15,13 @@ gem 'jbuilder', '~> 2.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'byebug'
 end
 
 group :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test, :development do
+  gem 'byebug'
 end
