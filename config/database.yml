@@ -12,8 +12,8 @@ development:
 
 test:
   <<: *default
-  # todo username
-  # todo password
+  username: postgres
+  password: postgres
   database: flashcheker_test
 
 production:
