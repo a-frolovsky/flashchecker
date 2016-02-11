@@ -1,5 +1,9 @@
-= render partial: "cards/revision", locals: { card: @revision_card }
-br
-p = link_to "Другое слово", root_path, class: "btn btn-default"
-  
-  
+- flash.each do |i, value|
+  .alert role="alert" class="alert-#{i}" = value
+
+- if @revision_card
+  = render partial: "cards/revision", locals: { card: @revision_card }
+  br
+  p = link_to "Другое слово", root_path, class: "btn btn-default"
+- else
+  h3 Карточки кончились

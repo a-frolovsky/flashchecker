@@ -1,6 +1,3 @@
-- flash.each do |i, value|
-  .alert role="alert" class="alert-#{i}" = value
-
 .form
   h3 = card.translated_text
   = simple_form_for card, url: revision_card_path, method: "post" do |f|

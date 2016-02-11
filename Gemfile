@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 gem 'pg'
 gem 'nokogiri'
 gem 'sass-rails', '~> 5.0'
@@ -19,6 +19,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'factory_girl_rails'
 end
 
