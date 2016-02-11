@@ -8,14 +8,12 @@ RSpec.describe Card, type: :model do
       it {
         expect(card.check_answer 'HoUsE').to be true
       }
-    end
 
-    context 'review_date updated' do
-      it {
+      it 'review_date updated' do
         if card.check_answer 'HoUsE'
           expect(card.review_date.to_s).to eq((Time.now + 3.day).strftime("%Y-%m-%d"))
         end
-      }
+      end
     end
 
     context 'when wrong answer' do
@@ -24,4 +22,6 @@ RSpec.describe Card, type: :model do
       }
     end
   end
+
+
 end
