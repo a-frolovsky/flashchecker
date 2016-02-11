@@ -6,16 +6,24 @@ document = Nokogiri::HTML(open(url))
 words = document.xpath('//*[@id="content"]/div/div[3]/div[2]/table[1]/tbody/*/td')
 
 words.each do |w|
-  # original - transpated
+  # original - translated
   item = w.text.split('-')
-
-  puts "#{w.text} loaded"
-
   Card.create({
     original_text: item[0].to_s.strip.capitalize,
     translated_text: item[1].to_s.mb_chars.strip.capitalize,
     review_date: Time.now
   })
 end
+puts 'Cards loaded...'
 
-puts 'Complete.'
+User.create([
+  {
+    email: 'test@bk.ru',
+    password: '123456'
+  },
+  {
+    email: 'guess@who.me',
+    password: 'qwerty'
+  }
+])
+puts 'Users loaded...'
