@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :cards
+  authenticates_with_sorcery!
 
-  validates :email, :password, presence: true
+  has_many :cards
 end
