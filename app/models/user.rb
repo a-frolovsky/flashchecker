@@ -3,9 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :cards
 
-  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes["password"] }
-  validates :password, confirmation: true, if: -> { new_record? || changes["password"] }
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
-
+  validates :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: true
+  validates :password, confirmation: true, length: { minimum: 3 }
 end
