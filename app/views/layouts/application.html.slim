@@ -7,7 +7,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
+    = render 'common/flash_noty'
     = render 'common/navbar'
-          
     .container.main-container
       = yield

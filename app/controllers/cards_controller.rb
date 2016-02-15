@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-    @cards = Card.all.order(:review_date)
+    @cards = Card.all.user(current_user.id).order(:review_date)
   end
 
   def edit
@@ -42,7 +42,7 @@ class CardsController < ApplicationController
     if @card.check_answer(params[:answer])
       redirect_to root_path, flash: { success: "Правильно" }
     else
-      redirect_to root_path, flash: { danger: "Не правильно" }
+      redirect_to root_path, flash: { warning: "Не правильно" }
     end
   end
 

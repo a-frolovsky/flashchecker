@@ -1,0 +1,6 @@
+- if flash.any?
+  = flash
+  .noty
+    - flash.each do |key, value|
+      div class="alert alert-#{key}"
+        = value
