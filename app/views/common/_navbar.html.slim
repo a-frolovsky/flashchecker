@@ -23,7 +23,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top
               li = link_to "Выход", logout_path, :method => :post
         - else
           li = link_to "Регистрация", new_user_path
-          li = link_to "Вход", login_path  
+          li = link_to "Вход", login_path
+          li = link_to 'Вход через Facebook', auth_at_provider_path(:provider => :facebook)  
               
             
         

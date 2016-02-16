@@ -58,8 +58,4 @@ RSpec.configure do |config|
 
   # Add factory girl
   config.include FactoryGirl::Syntax::Methods
-
-  # Helpers for sorcery
-  config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
-  config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
 end

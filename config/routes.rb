@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :cards
   post 'revision_card' => 'cards#revision_card'
 
-  # 404
-  match "/(*url)", to: redirect('/404'), via: [:get, :post]
+  # Oauth
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 end
