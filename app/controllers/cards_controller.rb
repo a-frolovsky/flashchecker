@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-    @cards = Card.all.when_user(current_user.id).order(:review_date)
+    @cards = current_user.cards.order(:review_date)
   end
 
   def edit
