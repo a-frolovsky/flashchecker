@@ -9,9 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to root_path, success: 'Пользователь обновлен'
+      redirect_to root_path, flash: { success: 'Пользователь обновлен' }
     else
-      render edit_user_path
+      flash.now[:warning] = 'Ошибка'
+      render :edit
     end
   end
 
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login @user
-      redirect_to root_path, success: 'User was successfully created'
+      redirect_to root_path, flash: { success: 'User was successfully created' }
     else
       render new_user_path
     end
