@@ -6,7 +6,7 @@ class Card < ActiveRecord::Base
 
   scope :random, -> { order("RANDOM()").limit(1) }
   scope :revision, -> { where("review_date <= ?", Time.now) }
-  scope :user, -> (id) { where("user_id = ?", id) }
+  scope :when_user, -> (id) { where("user_id = ?", id) }
 
   def check_answer(answer)
     if words_eq(self.original_text, answer)

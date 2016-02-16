@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
 
-    if @user.valid?
+    if @user.save
       auto_login @user
       redirect_to root_path, success: 'User was successfully created'
     else
