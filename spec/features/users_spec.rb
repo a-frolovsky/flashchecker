@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
   describe '#registration' do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { build :user }
 
     it 'success' do
       visit new_user_path
