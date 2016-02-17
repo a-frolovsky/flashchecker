@@ -26,4 +26,5 @@ end
 
 group :test, :development do
   gem 'byebug'
+  gem 'figaro'
 end
