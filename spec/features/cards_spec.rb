@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature "Cards", type: :feature do
-  let!(:card) { create :card, original_text: "House", translated_text: "Дом", review_date: Time.now }
+  let!(:user) { create :user }
+  let!(:card) { create :card, original_text: "House", translated_text: "Дом", user_id: user.id }
 
   describe 'card' do
     context 'check answer' do
       it 'right answer' do
+        login('guess@who.me', 'qwerty')
+
         visit root_path
         within('form.simple_form.edit_card') do
           fill_in('answer', :with => 'House')
@@ -16,6 +19,8 @@ RSpec.feature "Cards", type: :feature do
       end
 
       it 'wrong answer' do
+        login('guess@who.me', 'qwerty')
+
         visit root_path
         within('form.simple_form.edit_card') do
           fill_in('answer', :with => 'Wrong')

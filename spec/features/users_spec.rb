@@ -22,25 +22,13 @@ RSpec.feature "Users", type: :feature do
     let!(:user) { create :user }
 
     it 'successful' do
-      visit login_path
-
-      within('form.simple_form.session') do
-        fill_in('session_email', :with => 'guess@who.me')
-        fill_in('session_password', :with => 'qwerty')
-        click_button 'Войти'
-      end
+      login('guess@who.me', 'qwerty')
 
       expect(page).to have_content('Login successful')
     end
 
     it 'failed' do
-      visit login_path
-
-      within('form.simple_form.session') do
-        fill_in('session_email', :with => 'guess@who.me')
-        fill_in('session_password', :with => 'failed')
-        click_button 'Войти'
-      end
+      login('guess@who.me', 'wrong_password')
 
       expect(page).to have_content('Login failed')
     end
@@ -50,15 +38,10 @@ RSpec.feature "Users", type: :feature do
     let!(:user) { create :user }
 
     it 'successful' do
-      visit login_path
-
-      within('form.simple_form.session') do
-        fill_in('session_email', :with => 'guess@who.me')
-        fill_in('session_password', :with => 'qwerty')
-        click_button 'Войти'
-      end
+      login('guess@who.me', 'qwerty')
 
       click_link 'Выход'
+
       expect(page).to have_content('Logged out!')
     end
   end
