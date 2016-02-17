@@ -1,6 +1,3 @@
-- flash.each do |i, value|
-  .alert role="alert" class="alert-#{i}" = value
-
 - if @revision_card
   = render partial: "cards/revision", locals: { card: @revision_card }
   br

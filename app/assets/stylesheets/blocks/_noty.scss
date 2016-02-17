@@ -1,0 +1,10 @@
+.noty {
+  position: fixed;
+  z-index: 999;
+  right: 55px;
+  bottom: 55px;
+
+  .alert {
+    box-shadow: 0 0 5px rgba(#000, 0.5);
+  }
+}

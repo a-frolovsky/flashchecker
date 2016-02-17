@@ -15,15 +15,3 @@ words.each do |w|
   })
 end
 puts 'Cards loaded...'
-
-User.create([
-  {
-    email: 'test@bk.ru',
-    password: '123456'
-  },
-  {
-    email: 'guess@who.me',
-    password: 'qwerty'
-  }
-])
-puts 'Users loaded...'

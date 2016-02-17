@@ -10,7 +10,23 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li
-          = link_to "Все карточки", cards_path
-        li
-          = link_to "Добавить карточку", new_card_path
+        - if logged_in?
+          li.dropdown
+            a#dropuser.dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+              = current_user.email
+              span.caret 
+            ul.dropdown-menu aria-labelledby="dropuser"
+              li = link_to "Все карточки", cards_path
+              li = link_to "Добавить карточку", new_card_path
+              li.divider role="seperator"
+              li = link_to "Профиль", edit_user_path(current_user.id)
+              li = link_to "Выход", logout_path, :method => :post
+        - else
+          li = link_to "Регистрация", new_user_path
+          li = link_to "Вход", login_path
+          li = link_to 'Вход через Facebook', auth_at_provider_path(:provider => :facebook)  
+              
+            
+        
+          
+          

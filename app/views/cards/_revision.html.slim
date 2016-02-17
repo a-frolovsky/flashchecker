@@ -4,6 +4,7 @@
     = f.hidden_field :id, value: card.id
     = text_field_tag :answer, 
       nil,
+      autocomplete: "off",
       placeholder: "Перевод",
       class: "form-control"
     br
