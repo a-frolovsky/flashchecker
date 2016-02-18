@@ -5,7 +5,7 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV['aws_secret_access_key'],
     region: ENV['aws_region']
   }
-  config.fog_directory = 'cards_image'
+  config.fog_directory = 'flashcheker'
   config.fog_public = false
   config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
 end
