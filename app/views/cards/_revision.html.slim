@@ -1,5 +1,7 @@
 .form
   h3 = card.translated_text
+  .thumbnail
+    img src="#{card.card_image.url}" alt=""
   = simple_form_for card, url: revision_card_path, method: "post" do |f|
     = f.hidden_field :id, value: card.id
     = text_field_tag :answer, 
