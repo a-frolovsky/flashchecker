@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_many :cards
+  has_many :decks
 
   validates :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: true
