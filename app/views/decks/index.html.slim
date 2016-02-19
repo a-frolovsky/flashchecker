@@ -1,0 +1,11 @@
+- if @decks.any?
+  h1 Ваши колоды
+  
+  ul
+    - @decks.each do |deck|
+      li 
+        p class="#{ 'bg-success' if deck.current }" = link_to deck.title, deck_path(deck.id)
+
+
+- else
+  .alert.alert-info.text-center Колоды еще не завезли!

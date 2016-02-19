@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new', :as => :login
   post 'logout', to: 'user_sessions#destroy', :as => :logout
 
+  # Decks
+  resources :decks
+
   # Cards
   resources :cards
   post 'revision_card' => 'cards#revision_card'

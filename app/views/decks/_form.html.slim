@@ -1,0 +1,6 @@
+= simple_form_for deck do |f|
+  = f.error_notification
+  = f.hidden_field :user_id, value: current_user.id
+  = f.input :title
+  = f.input :current, wrapper: :vertical_radio_and_checkboxes
+  = f.button :submit

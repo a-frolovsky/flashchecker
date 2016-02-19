@@ -17,7 +17,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
               span.caret 
             ul.dropdown-menu aria-labelledby="dropuser"
               li = link_to "Все карточки", cards_path
-              li = link_to "Добавить карточку", new_card_path
+              li = link_to "Все колоды", decks_path
+              li.divider role="seperator"
+              li = link_to "Создать карточку", new_card_path
+              li = link_to "Создать колоду", new_deck_path
               li.divider role="seperator"
               li = link_to "Профиль", edit_user_path(current_user.id)
               li = link_to "Выход", logout_path, :method => :post

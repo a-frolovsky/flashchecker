@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 20160219172950) do
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
 
   create_table "decks", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                      null: false
+    t.boolean  "current",    default: false
+    t.integer  "user_id",                    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|
