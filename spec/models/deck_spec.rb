@@ -4,12 +4,10 @@ RSpec.describe Deck, type: :model do
   let!(:user) { create :user }
   let(:deck) { create :deck, user: user }
 
-  it 'current status = false to default' do
-    expect(deck.current).to be false
-  end
-
-  describe '123' do
-    let!(:user) { create :user }
+  describe '#deck' do
+    it 'current status = false to default' do
+      expect(deck.current).to be false
+    end
 
     it 'only one deck is current' do
       create(:deck, title: 'first', user: user)

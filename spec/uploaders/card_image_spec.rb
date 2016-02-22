@@ -4,7 +4,8 @@ require 'carrierwave/test/matchers'
 describe CardImageUploader do
   include CarrierWave::Test::Matchers
   let!(:user) { create :user }
-  let!(:card) { create :card, user: user }
+  let!(:deck) { create :deck, user: user }
+  let!(:card) { create :card, user: user, deck: deck }
 
   before :all do
     CardImageUploader.enable_processing = true
