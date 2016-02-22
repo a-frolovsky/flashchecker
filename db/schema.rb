@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160222185638) do
     t.datetime "updated_at",      null: false
     t.integer  "user_id"
     t.string   "card_image"
-    t.integer  "deck_id"
+    t.integer  "deck_id",         null: false
   end
 
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
