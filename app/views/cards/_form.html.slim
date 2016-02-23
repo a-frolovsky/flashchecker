@@ -1,15 +1,21 @@
-- if @card.card_image?
-  .thumbnail
-    img src="#{@card.card_image.url}" alr=""
+- if @decks.any?
+  - if @card.card_image?
+    .thumbnail
+      img src="#{@card.card_image.url}" alr=""
+      
+  = simple_form_for @card do |f|
+    = f.error_notification
+    = f.hidden_field :user_id, value: current_user.id
+    = f.input :original_text
+    = f.input :translated_text
+    .form-group.string.required.card_image
+      label.string.required.control-label for="card_image" Card image
+      = f.file_field :card_image, id: 'card_image'
+    = f.input :review_date, default: Time.now + 3.days
+    = f.input :deck_id, collection: @decks, include_blank: false
+    = f.button :submit
     
-= simple_form_for @card do |f|
-  = f.error_notification
-  = f.hidden_field :user_id, value: current_user.id
-  = f.input :original_text
-  = f.input :translated_text
-  .form-group.string.required.card_image
-    label.string.required.control-label for="card_image" Card image
-    = f.file_field :card_image, id: 'card_image'
-  = f.input :review_date, default: Time.now + 3.days
-  = f.input :deck_id, collection: @decks, include_blank: false
-  = f.button :submit
+- else
+  p.bg-info 
+    p Сначала создайте хотя-бы одну колоду
+    = link_to 'создать колоду', new_deck_path
