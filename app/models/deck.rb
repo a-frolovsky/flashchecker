@@ -4,7 +4,7 @@ class Deck < ActiveRecord::Base
 
   validates :title, presence: true
 
-  scope :current, -> { where("current = ?", true) }
+  scope :current, -> { where("current", true) }
 
   before_save :update_current_status
 

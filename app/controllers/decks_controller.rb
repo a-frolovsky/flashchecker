@@ -1,19 +1,17 @@
 class DecksController < ApplicationController
+  before_action :deck, only: [:show, :edit, :update]
+
   def index
     @decks = current_user.decks.order(:id)
   end
 
   def show
-    @deck = current_user.decks.find(params[:id])
   end
 
   def edit
-    @deck = current_user.decks.find(params[:id])
   end
 
   def update
-    @deck = current_user.decks.find(params[:id])
-
     if @deck.update_attributes(deck_params)
       redirect_to decks_path, flash: { success: 'Колода обновлена' }
     else
@@ -45,5 +43,9 @@ class DecksController < ApplicationController
   private
   def deck_params
     params.require(:deck).permit!
+  end
+
+  def deck
+    @deck = current_user.decks.find(params[:id])
   end
 end
