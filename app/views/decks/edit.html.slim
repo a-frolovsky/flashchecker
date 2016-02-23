@@ -1,0 +1,7 @@
+h1 Редактирование колоды
+
+= render partial: 'form', locals: { deck: @deck }
+
+br 
+
+= link_to "удалить", @deck, method: :delete, data: { confirm: 'Удаляем?' }

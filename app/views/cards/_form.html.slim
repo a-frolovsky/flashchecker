@@ -11,4 +11,5 @@
     label.string.required.control-label for="card_image" Card image
     = f.file_field :card_image, id: 'card_image'
   = f.input :review_date, default: Time.now + 3.days
+  = f.input :deck_id, collection: @decks, include_blank: false
   = f.button :submit

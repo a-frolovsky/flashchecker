@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Cards", type: :feature do
   let!(:user) { create :user }
-  let!(:card) { create :card, original_text: "House", translated_text: "Дом", user: user }
+  let!(:deck) { create :deck, user: user }
+  let!(:card) { create :card, original_text: "House", translated_text: "Дом", user: user, deck: deck }
 
   before :each do
     login('guess@who.me', 'qwerty')

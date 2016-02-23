@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-  let(:card) { create :card, original_text: "House", translated_text: "Дом", review_date: Time.now }
+  let!(:user) { create :user }
+  let(:deck) { create :deck, user: user }
+  let(:card) { create :card, original_text: "House", translated_text: "Дом", review_date: Time.now, user: user, deck: deck }
 
   describe '#check_answer' do
     context 'when right answer' do
