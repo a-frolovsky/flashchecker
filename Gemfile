@@ -32,3 +32,7 @@ group :test, :development do
   gem 'byebug'
   gem 'figaro'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
