@@ -5,7 +5,7 @@ RSpec.describe Card, type: :model do
   let(:deck) { create :deck, user: user }
 
   before :each do
-    @card =create(:card, original_text: "House", translated_text: "Дом", review_date: Time.zone.now, user: user, deck: deck)
+    @card = create(:card, original_text: "House", translated_text: "Дом", review_date: Time.zone.now, user: user, deck: deck)
   end
 
 
@@ -17,7 +17,7 @@ RSpec.describe Card, type: :model do
 
       it 'increment attemp' do
         if @card.check_answer 'HoUsE'
-          expect(@card.attemp).to eq 2
+          expect(@card.attempt).to eq 2
         end
       end
 
@@ -29,8 +29,8 @@ RSpec.describe Card, type: :model do
 
 
       it 'review_date updated from third attempt' do
-        @card.attemp = 3
-      
+        @card.attempt = 3
+
         if @card.check_answer 'HoUsE'
           expect(@card.review_date.rfc2822).to eq( (Time.zone.now + 7.day).rfc2822 )
         end

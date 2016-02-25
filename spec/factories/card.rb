@@ -6,5 +6,6 @@ FactoryGirl.define do
     # card_image
     # user
     # deck
+    # attempt
   end
 end

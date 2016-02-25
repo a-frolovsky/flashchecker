@@ -12,7 +12,7 @@ class Card < ActiveRecord::Base
 
   def check_answer(answer)
     if words_eq(self.original_text, answer)
-      update_review_date(self.attemp)
+      update_review_date(self.attempt)
     else
       update_review_date
       return false
@@ -26,18 +26,18 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def update_review_date(attemp = 'reset')
-    if attemp == 'reset'
+  def update_review_date(attempt = 'reset')
+    if attempt == 'reset'
       review_date = Time.zone.now + add_time(1)
-      update_attributes(review_date: review_date, attemp: 1)
+      update_attributes(review_date: review_date, attempt: 1)
     else
-      review_date = Time.zone.now + add_time(attemp)
-      update_attributes(review_date: review_date, attemp: attemp += 1)
+      review_date = Time.zone.now + add_time(attempt)
+      update_attributes(review_date: review_date, attempt: attempt += 1)
     end
   end
 
-  def add_time(attemp)
-    case attemp
+  def add_time(attempt)
+    case attempt
     when 1
       12.hour
     when 2
