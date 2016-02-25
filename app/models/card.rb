@@ -8,11 +8,14 @@ class Card < ActiveRecord::Base
   before_validation :original_equal_translated
 
   scope :random, -> { order("RANDOM()").limit(1) }
-  scope :revision, -> { where("review_date <= ?", Time.now) }
+  scope :revision, -> { where("review_date <= ?", Time.zone.now) }
 
   def check_answer(answer)
     if words_eq(self.original_text, answer)
-      update_review_date
+      update_review_date(self.attemp)
+    else
+      update_review_date('reset')
+      return false
     end
   end
 
@@ -23,8 +26,29 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def update_review_date
-    update_attribute(:review_date, Time.now + 3.day)
+  def update_review_date(attemp)
+    if attemp == 'reset'
+      review_date = Time.zone.now + add_time(1)
+      update_attributes(review_date: review_date, attemp: 1)
+    else
+      review_date = Time.zone.now + add_time(attemp)
+      update_attributes(review_date: review_date, attemp: attemp += 1)
+    end
+  end
+
+  def add_time(attemp)
+    case attemp
+    when 1
+      12.hour
+    when 2
+      3.day
+    when 3
+      7.day
+    when 4
+      2.week
+    else
+      1.month
+    end
   end
 
   def words_eq(first, last)
