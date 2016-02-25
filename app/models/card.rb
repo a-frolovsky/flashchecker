@@ -14,7 +14,7 @@ class Card < ActiveRecord::Base
     if words_eq(self.original_text, answer)
       update_review_date(self.attemp)
     else
-      update_review_date('reset')
+      update_review_date
       return false
     end
   end
@@ -26,7 +26,7 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def update_review_date(attemp)
+  def update_review_date(attemp = 'reset')
     if attemp == 'reset'
       review_date = Time.zone.now + add_time(1)
       update_attributes(review_date: review_date, attemp: 1)
