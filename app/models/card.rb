@@ -26,28 +26,25 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def update_review_date(attempt = 'reset')
-    if attempt == 'reset'
-      review_date = Time.zone.now + add_time(1)
-      update_attributes(review_date: review_date, attempt: 1)
-    else
-      review_date = Time.zone.now + add_time(attempt)
-      update_attributes(review_date: review_date, attempt: attempt += 1)
-    end
+  def update_review_date(attempt = 0)
+    review_date = Time.zone.now + add_time(attempt)
+    update_attributes(review_date: review_date, attempt: attempt += 1)
   end
 
   def add_time(attempt)
     case attempt
-    when 1
-      12.hour
-    when 2
-      3.day
-    when 3
-      7.day
-    when 4
-      2.week
-    else
-      1.month
+      when 0
+        12.hour
+      when 1
+        12.hour
+      when 2
+        3.day
+      when 3
+        7.day
+      when 4
+        2.week
+      else
+        1.month
     end
   end
 
