@@ -1,0 +1,10 @@
+engines:
+  rubocop:
+    enabled: true
+    exclude_fingerprints:
+    # Sorcery recomendation code
+    - 99af6908c71428d5626f48927ecdb8ec
+    - 2833a3f3f2fff69a5ad53adcfbf23f6b
+exclude_paths:
+- spec/**/*
+- vendor/**/*
