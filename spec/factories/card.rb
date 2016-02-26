@@ -2,9 +2,10 @@ FactoryGirl.define do
   factory :card do
     original_text "House"
     translated_text "ДоМ"
-    review_date Time.zone.today
+    review_date Time.zone.now
     # card_image
     # user
     # deck
+    # attempt
   end
 end
