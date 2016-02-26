@@ -1,5 +1,3 @@
-require "damerau-levenshtein"
-
 class Card < ActiveRecord::Base
   mount_uploader :card_image, CardImageUploader
 
