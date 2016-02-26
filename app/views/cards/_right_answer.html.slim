@@ -1,0 +1,6 @@
+h3 = @card.translated_text
+hr
+p Правильный ответ: #{ @card.original_text }
+p Ваш ответ: #{ @answer }
+hr
+= link_to 'Следующая карта', root_path

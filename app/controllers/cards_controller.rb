@@ -40,11 +40,13 @@ class CardsController < ApplicationController
 
   def revision_card
     @card = Card.find(params[:card][:id])
+    @answer = params[:answer]
 
     if @card.check_answer(params[:answer])
       redirect_to root_path, flash: { success: "Правильно" }
     else
-      redirect_to root_path, flash: { warning: "Не правильно" }
+      flash.now[:warning] = "Не правильно"
+      render '_right_answer'
     end
   end
 

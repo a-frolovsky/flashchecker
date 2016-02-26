@@ -1,3 +1,5 @@
+require "damerau-levenshtein"
+
 class Card < ActiveRecord::Base
   mount_uploader :card_image, CardImageUploader
 
@@ -44,11 +46,18 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def words_eq(first, last)
-    first.downcase.strip == last.downcase.strip
+  def words_eq(first, second)
+    first_word = first.downcase.strip
+    second_word = second.downcase.strip
+
+    levenshtein_distance(first_word, second_word) < 1
   end
 
   def set_review_date
     self.review_date = Time.zone.now
+  end
+
+  def levenshtein_distance(original, translated)
+    DamerauLevenshtein.distance(original, translated)
   end
 end
