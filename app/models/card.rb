@@ -26,7 +26,7 @@ class Card < ActiveRecord::Base
 
   def update_review_date(attempt)
     review_date = Time.zone.now + add_time(attempt)
-    update_attributes(review_date: review_date, attempt: attempt += 1)
+    update_attributes(review_date: review_date, attempt: attempt + 1)
   end
 
   def add_time(attempt)
