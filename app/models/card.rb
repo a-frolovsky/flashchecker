@@ -11,11 +11,8 @@ class Card < ActiveRecord::Base
   scope :revision, -> { where("review_date <= ?", Time.zone.now) }
 
   def check_answer(answer)
-    if words_eq(self.original_text, answer)
-      update_review_date(self.attempt)
-    else
-      update_review_date
-      return false
+    words_eq(original_text, answer).tap do |success|
+      update_review_date(success ? attempt : 0)
     end
   end
 
@@ -26,16 +23,14 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def update_review_date(attempt = 0)
+  def update_review_date(attempt)
     review_date = Time.zone.now + add_time(attempt)
     update_attributes(review_date: review_date, attempt: attempt += 1)
   end
 
   def add_time(attempt)
     case attempt
-      when 0
-        12.hour
-      when 1
+      when 0..1
         12.hour
       when 2
         3.day
