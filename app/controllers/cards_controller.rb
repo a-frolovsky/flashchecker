@@ -1,10 +1,11 @@
 class CardsController < ApplicationController
+  before_action :decks, only: [:edit, :update, :new, :create]
+
   def index
     @cards = current_user.cards.order(:review_date)
   end
 
   def edit
-    @decks = current_user.decks
     @card = Card.find(params[:id])
   end
 
@@ -14,12 +15,11 @@ class CardsController < ApplicationController
     if @card.update_attributes(card_params)
       redirect_to cards_path
     else
-      redirect_to edit_card_path(@card)
+      render 'edit'
     end
   end
 
   def new
-    @decks = current_user.decks
     @card = Card.new
   end
 
@@ -29,7 +29,7 @@ class CardsController < ApplicationController
     if @card.valid?
       redirect_to cards_path
     else
-      render new_card_path
+      render 'new'
     end
   end
 
@@ -51,5 +51,9 @@ class CardsController < ApplicationController
   private
   def card_params
     params.require(:card).permit!
+  end
+
+  def decks
+    @decks = current_user.decks
   end
 end

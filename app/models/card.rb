@@ -6,6 +6,7 @@ class Card < ActiveRecord::Base
 
   validates :original_text, :translated_text, :review_date, :deck_id, presence: true
   before_validation :original_equal_translated
+  before_validation :set_review_date, on: [:create]
 
   scope :random, -> { order("RANDOM()").limit(1) }
   scope :revision, -> { where("review_date <= ?", Time.zone.now) }
@@ -45,5 +46,9 @@ class Card < ActiveRecord::Base
 
   def words_eq(first, last)
     first.downcase.strip == last.downcase.strip
+  end
+
+  def set_review_date
+    self.review_date = Time.zone.now
   end
 end
