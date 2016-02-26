@@ -17,6 +17,7 @@ gem 'damerau-levenshtein'
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick'
 gem 'fog'
+gem 'whenever', :require => false
 
 group :development do
   gem 'better_errors'

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    User.pending_cards
   end
 
   def update

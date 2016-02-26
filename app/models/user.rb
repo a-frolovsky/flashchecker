@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, length: { minimum: 3 }
 
   accepts_nested_attributes_for :authentications
+
+  # For cron/mailer
+  def self.pending_cards
+    User.joins(:cards).where('cards.review_date <= ?', Time.zone.now).each do |user|
+      NotificationMailer.pending_cards(user).deliver_now
+    end
+  end
 end
