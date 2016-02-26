@@ -16,24 +16,21 @@ RSpec.describe Card, type: :model do
       }
 
       it 'increment attemp' do
-        if @card.check_answer 'HoUsE'
-          expect(@card.attempt).to eq 2
-        end
+        @card.check_answer 'HoUsE'
+        expect(@card.attempt).to eq 2
       end
 
       it 'review_date updated from first attempt' do
-        if @card.check_answer 'HoUsE'
-          expect(@card.review_date.rfc2822).to eq( (Time.zone.now + 12.hour).rfc2822 )
-        end
+        @card.check_answer 'HoUsE'
+        expect(@card.review_date.rfc2822).to eq (Time.zone.now + 12.hour).rfc2822
       end
 
 
       it 'review_date updated from third attempt' do
         @card.attempt = 3
 
-        if @card.check_answer 'HoUsE'
-          expect(@card.review_date.rfc2822).to eq( (Time.zone.now + 7.day).rfc2822 )
-        end
+        @card.check_answer 'HoUsE'
+        expect(@card.review_date.rfc2822).to eq (Time.zone.now + 7.day).rfc2822
       end
     end
 
@@ -43,9 +40,8 @@ RSpec.describe Card, type: :model do
       }
 
       it 'review_date reseted' do
-        if @card.check_answer 'House'
-          expect(@card.review_date.rfc2822).to eq( (Time.zone.now + 12.hour).rfc2822 )
-        end
+        @card.check_answer 'House'
+        expect(@card.review_date.rfc2822).to eq (Time.zone.now + 12.hour).rfc2822 
       end
     end
   end
