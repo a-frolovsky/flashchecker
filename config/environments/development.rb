@@ -49,4 +49,7 @@ Rails.application.configure do
     :user_name => "postmaster@#{ENV['mailgun_domain']}",
     :password => ENV['mailgun_password']
   }
+  config.action_mailer.default_options = {
+    :from => 'no-reply@flashcheck.io'
+  }
 end
