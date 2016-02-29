@@ -38,4 +38,18 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Mailgun.com
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => ENV['mailgun_domain'],
+    :user_name => "postmaster@#{ENV['mailgun_domain']}",
+    :password => ENV['mailgun_password']
+  }
+  config.action_mailer.default_options = {
+    :from => 'no-reply@flashcheck.io'
+  }
 end
