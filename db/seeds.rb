@@ -1,4 +1,4 @@
-user = User.create({ email: 'test@test.ru', password: 'qwerty', password_confirmation: 'qwerty' })
+user = User.create({ email: 'test@mailinator.com', password: 'qwerty', password_confirmation: 'qwerty' })
 puts 'User: test@test.ru, qwerty created.'
 
 deck = Deck.create({ title: 'First deck', user: user })

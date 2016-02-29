@@ -39,15 +39,10 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # Mailer Gmail
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            ENV['gmail_username'],
-    password:             ENV['gmail_password'],
-    authentication:       'plain',
-    enable_starttls_auto: true
+  # Mailgun.com
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['mailgun_api_key'],
+    domain: ENV['mailgun_domain']
   }
 end

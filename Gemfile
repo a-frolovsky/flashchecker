@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sorcery'
 gem 'damerau-levenshtein'
+gem 'mailgun_rails'
 
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick'

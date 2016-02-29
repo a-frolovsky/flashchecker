@@ -79,6 +79,8 @@ GEM
       rake-compiler (~> 0.9)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
+    domain_name (0.5.20160216)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     excon (0.45.4)
     execjs (2.6.0)
@@ -205,6 +207,8 @@ GEM
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -221,6 +225,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailgun_rails (0.8.0)
+      actionmailer (>= 3.2.13)
+      json (>= 1.7.7)
+      rest-client (>= 1.6.7)
     mime-types (2.99.1)
     mini_magick (4.4.0)
     mini_portile2 (2.0.0)
@@ -228,6 +236,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     oauth (0.5.0)
@@ -277,6 +286,10 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -336,6 +349,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     whenever (0.9.4)
       chronic (>= 0.6.3)
     xml-simple (1.1.5)
@@ -358,6 +374,7 @@ DEPENDENCIES
   fog
   jbuilder (~> 2.0)
   jquery-rails
+  mailgun_rails
   mini_magick
   nokogiri
   pg
