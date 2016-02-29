@@ -16,18 +16,18 @@ nav.navbar.navbar-inverse.navbar-fixed-top
               = current_user.email
               span.caret 
             ul.dropdown-menu aria-labelledby="dropuser"
-              li = link_to "Все карточки", cards_path
-              li = link_to "Все колоды", decks_path
+              li = link_to t('all_cards'), cards_path
+              li = link_to t('all_decks'), decks_path
               li.divider role="seperator"
-              li = link_to "Создать карточку", new_card_path
-              li = link_to "Создать колоду", new_deck_path
+              li = link_to t('create_card'), new_card_path
+              li = link_to t('create_deck'), new_deck_path
               li.divider role="seperator"
-              li = link_to "Профиль", edit_user_path(current_user.id)
-              li = link_to "Выход", logout_path, :method => :post
+              li = link_to t('profile'), edit_user_path(current_user.id)
+              li = link_to t('exit'), logout_path, :method => :post
         - else
-          li = link_to "Регистрация", new_user_path
-          li = link_to "Вход", login_path
-          li = link_to 'Вход через Facebook', auth_at_provider_path(:provider => :facebook)  
+          li = link_to t('sign_up'), new_user_path
+          li = link_to t('sign_in'), login_path
+          li = link_to t('sign_in_facebook'), auth_at_provider_path(:provider => :facebook)  
               
             
         
