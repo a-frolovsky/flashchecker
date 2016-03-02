@@ -40,7 +40,7 @@ RSpec.feature "Users", type: :feature do
     it 'successful' do
       login('guess@who.me', 'qwerty')
 
-      click_link 'Выход'
+      click_link I18n.translate 'exit'
 
       expect(page).to have_content('Logged out!')
     end
