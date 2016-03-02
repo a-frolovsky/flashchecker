@@ -10,10 +10,11 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li class=('active' if current_locale(:en))
-          = link_to 'EN', locale: 'en'
-        li class=('active' if current_locale(:ru))
-          = link_to 'RU', locale: 'ru'
+        - if !current_user
+          li class=('active' if current_locale(:en))
+            = link_to 'EN', locale: 'en'
+          li class=('active' if current_locale(:ru))
+            = link_to 'RU', locale: 'ru'
         - if logged_in?
           li.dropdown
             a#dropuser.dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
